@@ -1,55 +1,98 @@
 // DOM Variables
+var welcomeContainer = document.getElementById("welcome");
+var startButton = document.getElementById("startQuiz");
 var body = document.body;
 var timeEl = document.getElementById("timeIncrement");
-var container = document.createElement("container");
-var h2 = document.createElement("h2");
-var p = document.createElement("p");
-var button = document.createElement("button");
+var h2 = document.getElementById("h2");
+var question = document.getElementById("question");
+var options = document.getElementById("options");
 
 // Javascript Variables
 var secondsLeft = 75;
+var currentStage = 0;
+var questions = [
+  {
+    name: "Commonly used data types DO NOT include:",
+    answer: {
+      a: "1. strings",
+      b: "2. booleans",
+      c: "3. alerts",
+      d: "4. numbers",
+    },
+    correctAnswer: "c",
+  },
+  {
+    name: "The condition in an if/else statement is enclosed within _____.",
+    answer: {
+      a: "1. quotes",
+      b: "2. curly brackets",
+      c: "3. parentheses",
+      d: "4. square brackets",
+    },
+    correctAnswer: "3. parentheses",
+  },
+  {
+    name: "Arrays in JavaScript can be used to store _____.",
+    answer: {
+      a: "1. numbers and strings",
+      b: "2. other arrays",
+      c: "3. booleans",
+      d: "4. all the above",
+    },
+    correctAnswer: "4. all the above",
+  },
+  {
+    name:
+      "String values must be enclosed within _____ when being assigned to variables.",
+    answer: {
+      a: "1. commas",
+      b: "2. curly brackets",
+      c: "3. quotes",
+      d: "parentheses",
+    },
+    correctAnswer: "3. quotes",
+  },
+  {
+    name:
+      "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answer: {
+      a: "1. JavaScript",
+      b: "2. terminal/bash",
+      c: "3. for loops",
+      d: "4. console log",
+    },
+    correctAnswer: "4. console log",
+  },
+];
 
 // Variable Text Content
-container.textContent = "";
-h2.textContent = "Coding Quiz Challenge";
-p.textContent =
-  "Try to answer the following code-related question within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds!";
-button.textContent = "Start Quiz";
+// welcomeContainer.textContent = "";
 
 // Variable Set Attributes
-h2.setAttribute("style", "text-align:center;margin-top:100px");
-p.setAttribute(
-  "style",
-  "text-align:center;margin-left:33%;margin-right:33%;margin-top:20px;"
-);
-container.setAttribute("style", "margin:auto; width:50%;");
-button.setAttribute(
-  "style",
-  "margin-left: 46%; margin-right: 30%;text-align: center;background-color:blue;border-radius: 7px;border:none;color:white; margin-top:20px"
-);
+welcomeContainer.setAttribute("style", "margin:auto; width:50%;");
+h2.setAttribute("style", "margin-top:30px; margin-bottom:20px");
+startButton.setAttribute("style", "margin-top:20px");
 
-// Variables Appending
-body.appendChild(container);
-container.appendChild(h2);
-container.appendChild(p);
-container.appendChild(button);
-
-// var timerInterval = setInterval(function () {
-//   secondsleft--;
-//   timeEl.textContent = "Time " + secondsLeft;
-//   //   setInterval();
-//   console.log(secondsLeft);
-//   body.append(timeEl);
-// });
+// define functions
 
 // Event Listener
-button.addEventListener("click", function () {
-  container.style.display = "none";
+startButton.addEventListener("click", function () {
+  welcomeContainer.style.display = "none";
   if (secondsLeft > 0) {
     interval = setInterval(function () {
       secondsLeft--;
       timeEl.textContent = "Time: " + secondsLeft;
       // So renderTime() is called here once every second.
     }, 1000);
+    renderOptions();
   }
 });
+renderOptions();
+function renderOptions() {
+  var question1 = questions[currentStage].name;
+  for (var i = 0; i < question1; i++) {
+    var optionsToDisplay = questions[currentStage].answers;
+    var value = renderOptions(optionsToDisplay);
+    console.log(value);
+  }
+}
