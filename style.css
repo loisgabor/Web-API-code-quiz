@@ -2,3 +2,14 @@
   color: gray;
   font-size: 15px;
 }
+
+.feedback {
+  font-style: italic;
+  font-size: 100%;
+  margin-top: 20px;
+  padding-top: 10px;
+  color: gray;
+  border-top: 2px solid #ccc;
+  margin: auto;
+  width: 50%;
+}
