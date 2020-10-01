@@ -6,7 +6,6 @@ var h2 = document.getElementById("h2");
 var answerSection = document.getElementById("answerSection");
 var userInputContainer = document.getElementById("userInput");
 var feedback = document.getElementById("feedback");
-var test = document.getElementById("test");
 var testQuestion = document.getElementById("testquestion");
 welcomeContainer.setAttribute("style", "margin:auto; width:50%;");
 
@@ -90,13 +89,13 @@ function renderQuestion() {
     answerSection.append(choiceButtons);
   }
   if (currentStage === stages.length) {
-    quit();
-    showScore();
+    testQuestion.innerHTML = "";
+    userInputContainer = "";
+    answerSection.innerHTML = "";
+    endQuiz();
   } else {
     renderQuestion();
     // No more quiz questions
-
-    showScore();
   }
 }
 
@@ -111,8 +110,10 @@ function showScore() {
 function endQuiz() {
   // stopQuizTimer();
   userInputContainer.innerHTML = "";
-  answerContainer.innerHTML = "none";
   feedback.innerHTML = "";
+  testQuestion.innerHTML = "";
+  answerSection.setAttribute("style", "display:hide");
+  console.log(answerSection);
   var allDoneEl = document.getElementById("all-done");
   allDoneEl.setAttribute("style", "h1");
   answerContainer.textContent = "none";
@@ -147,11 +148,10 @@ answerSection.addEventListener("click", function (event) {
   feedback.setAttribute("class", "feedback");
   feedback.setAttribute("style", "margin:auto; width:50%;");
   var element = event.target;
-  var correctAnswer = stages[currentStage].correctAnswer;
+  // var correctAnswer = stages[currentStage].correctAnswer;
   // console.log(correctAnswer);
   if (element.matches("button") === true) {
     console.log(element.getAttribute("data-value"));
-    console.log(stages[currentStage].correctAnswer);
     if (
       element.getAttribute("data-value") !== stages[currentStage].correctAnswer
     ) {
