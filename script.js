@@ -11,7 +11,7 @@ welcomeContainer.setAttribute("style", "margin:auto; width:50%;");
 var submitBtn = document.getElementById("submit");
 var allDone = document.getElementById("all-done");
 var yourScore = document.getElementById("your-score");
-let secondsLeft = 10;
+let secondsLeft = 70;
 let currentStage = 0;
 const penalty = 15;
 
