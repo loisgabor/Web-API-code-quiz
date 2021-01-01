@@ -4,7 +4,6 @@ The scope of this project is to create a timed quiz, where when one question is 
 
 ## Usage
 
-https://loisimonca.github.io/Web-API-code-quiz/index.html
 When user press button "start quiz" User will be presented with a question and multiple choice answers. When user would click an answer he/she would immediately be taken to the next question. There is also a timer element that counts down from 75 seconds and for each wrong answer, 15 seconds is deducted from the remaining time.
 
 ![screenshot](/images/image1.png)
